@@ -555,6 +555,9 @@ class App {
         // Init Feedback system
         this.setupFeedback();
 
+        // Init Social Lounge feed & filters
+        this.setupSocialLounge();
+
         // Scroll reveals for timeline
         this.setupScrollTriggers();
 
@@ -1261,6 +1264,203 @@ class App {
             successMessage.classList.remove('show');
             setTimeout(() => successMessage.remove(), 400);
         }, 4000);
+    }
+
+    setupSocialLounge() {
+        const grid = document.getElementById('social-feed-grid');
+        const tabContainer = document.getElementById('social-tabs-bar');
+        
+        if (!grid || !tabContainer) return;
+
+        const socialPosts = [
+            {
+                id: 1,
+                network: "instagram",
+                date: "2 hours ago",
+                caption: "Baking artisan sourdough Garden Neapolitan Pizzas from scratch! 🍕 Slow-fermented for 24 hours for that perfect light, airy bubble crust. Sliced fresh organic sweet basil and cold-pressed olive oil drizzle are essential! #veganpizza #neapolitan #cookingwithfrozen",
+                likes: 342,
+                comments: 24,
+                media: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=500",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-a-fresh-pizza-41586-large.mp4"
+            },
+            {
+                id: 2,
+                network: "tiktok",
+                date: "5 hours ago",
+                caption: "Wok-toss Szechuan Ribbon Noodles in under 10 minutes! 🍜 Thick handmade noodles glazed in spicy chili oil, minced garlic, ginger, and roasted peanut crunch. So snappy and delicious! 🌶️ #veganrecipes #ramen #easycooking #quickmeals",
+                likes: 1205,
+                comments: 89,
+                media: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=500",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-tossing-vegetables-in-a-wok-41572-large.mp4"
+            },
+            {
+                id: 3,
+                network: "instagram",
+                date: "Yesterday",
+                caption: "A royal feast in the making: Mughal Cashew & Tofu Korma 🍛 Cooked in velvety cashew paste, slow-simmered cardamom, and pure saffron-infused coconut cream. Feeds the soul! ✨ #indianfood #veganfeast #currygram #spicelife",
+                likes: 567,
+                comments: 42,
+                media: "https://images.unsplash.com/photo-1585938338392-50a59970d2ee?auto=format&fit=crop&q=80&w=500",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-spices-falling-on-a-table-40182-large.mp4"
+            },
+            {
+                id: 4,
+                network: "youtube",
+                date: "3 days ago",
+                caption: "RAIPUR CULINARY TOUR: Exploring Native Chhattisgarhi Street Foods! 🥞 Steamed Bafauri, crispy Fara, and hot iron-griddled Chila at Gadh Kalewa. Watch the full detailed vlog now on our channel! Link in bio. 🎬 #raipur #chhattisgarh #localfood #streetfood",
+                likes: 2450,
+                comments: 176,
+                media: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&q=80&w=500",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-slicing-fresh-avocado-on-cutting-board-41583-large.mp4"
+            },
+            {
+                id: 5,
+                network: "tiktok",
+                date: "4 days ago",
+                caption: "Guilt-free Coconut Fruit Custard cups layered with sweet ripe organic mango gelee and raspberry seeds! 🍨 The perfect quick weekend dessert for the family. #vegandessert #healthycustard #coconutcream #fruitparfait",
+                likes: 980,
+                comments: 54,
+                media: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=500",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-pouring-chocolate-sauce-on-cake-41585-large.mp4"
+            },
+            {
+                id: 6,
+                network: "instagram",
+                date: "Last week",
+                caption: "Vibrant Mexican Street Tacos 🌮 Stuffed with garlic-roasted sweet potatoes, rich black beans, and finished with a dark 24-ingredient chocolate Mole Negro sauce. Absolutely sensational taste balance! #tacotuesday #mexicanvegan #streetfood",
+                likes: 620,
+                comments: 31,
+                media: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&q=80&w=500",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-slicing-fresh-avocado-on-cutting-board-41583-large.mp4"
+            }
+        ];
+
+        const renderFeed = (filterNetwork = 'all') => {
+            grid.innerHTML = '';
+            const filtered = filterNetwork === 'all' 
+                ? socialPosts 
+                : socialPosts.filter(p => p.network === filterNetwork);
+
+            filtered.forEach((post, index) => {
+                const card = document.createElement('article');
+                card.className = 'social-post-card';
+                card.setAttribute('data-cursor-food', post.network === 'instagram' ? '📸' : post.network === 'tiktok' ? '🎵' : '📺');
+                card.style.animationDelay = `${index * 0.06}s`;
+
+                let networkBadge = '';
+                if (post.network === 'instagram') {
+                    networkBadge = `<span class="social-badge network-ig" title="Instagram Post">Instagram</span>`;
+                } else if (post.network === 'tiktok') {
+                    networkBadge = `<span class="social-badge network-tt" title="TikTok Reel">TikTok</span>`;
+                } else {
+                    networkBadge = `<span class="social-badge network-yt" title="YouTube Vlog">YouTube</span>`;
+                }
+
+                card.innerHTML = `
+                    <div class="social-post-header">
+                        <img src="assets/chef_avatar.png" alt="Chef Avatar" class="social-post-avatar">
+                        <div class="social-post-meta">
+                            <span class="social-post-username">@cooking_with_frozen</span>
+                            <span class="social-post-time">${post.date}</span>
+                        </div>
+                        ${networkBadge}
+                    </div>
+                    <div class="social-post-media-container">
+                        <video class="social-post-video" src="${post.video}" loop muted playsinline></video>
+                        <img src="${post.media}" alt="Post Media" class="social-post-img">
+                        <div class="social-play-overlay">▶</div>
+                    </div>
+                    <div class="social-post-actions">
+                        <button class="social-action-btn like-btn">❤️ <span class="like-count">${post.likes}</span></button>
+                        <button class="social-action-btn comment-btn">💬 <span>${post.comments}</span></button>
+                        <button class="social-action-btn share-btn">📤</button>
+                    </div>
+                    <div class="social-post-body">
+                        <p class="social-post-caption">${post.caption}</p>
+                    </div>
+                `;
+
+                // Handle post video hover effects
+                const container = card.querySelector('.social-post-media-container');
+                const video = card.querySelector('video');
+                const img = card.querySelector('.social-post-img');
+                const playOverlay = card.querySelector('.social-play-overlay');
+
+                if (container && video && img && playOverlay) {
+                    container.addEventListener('mouseenter', () => {
+                        playOverlay.style.opacity = '0';
+                        video.style.opacity = '1';
+                        img.style.opacity = '0.3';
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(err => console.log('Video hover playback prevented:', err));
+                        }
+                    });
+
+                    container.addEventListener('mouseleave', () => {
+                        playOverlay.style.opacity = '1';
+                        video.style.opacity = '0';
+                        img.style.opacity = '1';
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+
+                // Interactive Like toggle
+                const likeBtn = card.querySelector('.like-btn');
+                const likeCountSpan = card.querySelector('.like-count');
+                let liked = false;
+                
+                likeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    liked = !liked;
+                    if (liked) {
+                        likeBtn.classList.add('liked');
+                        likeBtn.style.color = '#B5483F';
+                        likeCountSpan.textContent = post.likes + 1;
+                    } else {
+                        likeBtn.classList.remove('liked');
+                        likeBtn.style.color = '';
+                        likeCountSpan.textContent = post.likes;
+                    }
+                });
+
+                // Post click redirection alert
+                card.addEventListener('click', () => {
+                    const alertBox = document.createElement('div');
+                    alertBox.className = 'social-redirect-alert';
+                    alertBox.innerHTML = `
+                        <div class="redirect-alert-content">
+                            <span>🔗 Redirecting you to <strong>@cooking_with_frozen</strong> on ${post.network.charAt(0).toUpperCase() + post.network.slice(1)}...</span>
+                        </div>
+                    `;
+                    document.body.appendChild(alertBox);
+                    setTimeout(() => alertBox.classList.add('show'), 10);
+                    setTimeout(() => {
+                        alertBox.classList.remove('show');
+                        setTimeout(() => alertBox.remove(), 400);
+                    }, 2500);
+                });
+
+                grid.appendChild(card);
+            });
+        };
+
+        // Filter tabs click listener
+        const tabs = tabContainer.querySelectorAll('.social-tab-btn');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const network = tab.getAttribute('data-network');
+                renderFeed(network);
+            });
+        });
+
+        // First initial render
+        renderFeed('all');
     }
 }
 

@@ -39,6 +39,7 @@
             <a href="#history" class="sidebar-link" data-target="history">Our History</a>
             <a href="#local-guide" class="sidebar-link" data-target="local-guide">Local Food Guide</a>
             <a href="#cuisines" class="sidebar-link" data-target="cuisines">Global Cuisines</a>
+            <a href="#social-lounge" class="sidebar-link" data-target="social-lounge">Social Lounge</a>
             <a href="#feedback" class="sidebar-link" data-target="feedback">Feedback Lounge</a>
         </nav>
     </div>
@@ -359,6 +360,53 @@
                             </div>
                         </div>
 
+                    </div>
+                </section>
+
+                <!-- ================= SOCIAL LOUNGE SECTION ================= -->
+                <section class="page-section" id="social-lounge">
+                    <div class="social-intro">
+                        <div class="mascot-brand-slug">Fresh from the Feed</div>
+                        <h2>Social Lounge</h2>
+                        <p>Stay up to date with the latest culinary creations, quick recipe reels, kitchen secrets, and daily gourmet updates from our official handles.</p>
+                    </div>
+
+                    <!-- Social Network Select Filter Tabs -->
+                    <div class="social-tabs" id="social-tabs-bar" data-cursor-food="📱">
+                        <button class="social-tab-btn active" data-network="all">All Feeds</button>
+                        <button class="social-tab-btn" data-network="instagram">Instagram</button>
+                        <button class="social-tab-btn" data-network="tiktok">TikTok</button>
+                        <button class="social-tab-btn" data-network="youtube">YouTube</button>
+                    </div>
+
+                    <!-- Dynamic Post Feed Grid -->
+                    <div class="social-feed-grid" id="social-feed-grid">
+                        <!-- Loaded dynamically via js/app.js -->
+                    </div>
+
+                    <!-- Production Live API Integration Architectural Guide -->
+                    <div class="social-integration-card">
+                        <div class="integration-badge">⚙️ Developer Integration Guide</div>
+                        <h3>How to Hook Up Live Social Feeds</h3>
+                        <p>To enable real-time automated feed syncing in your production environment, you can choose from the following industry standard pathways:</p>
+                        
+                        <div class="integration-methods-grid">
+                            <div class="method-card">
+                                <h4>1. Direct Meta Graph API (Instagram)</h4>
+                                <p>Register a Meta Developer application and acquire a <strong>Long-Lived User Access Token</strong> (60-day lifespan).</p>
+                                <p class="method-tip">💡 Set up a daily serverless function to poll <code>graph.instagram.com/me/media</code>, and a monthly cron task to auto-refresh the token via the <code>/refresh_access_token</code> endpoint so it never expires.</p>
+                            </div>
+                            <div class="method-card">
+                                <h4>2. Google Cloud YouTube API v3</h4>
+                                <p>Create a Google API Key and query the channel uploads playlist via YouTube's <code>playlistItems</code> endpoint.</p>
+                                <p class="method-tip">💡 Fast, stable, and simple client-side fetch without complex OAuth logins required.</p>
+                            </div>
+                            <div class="method-card">
+                                <h4>3. High-Performance Feed Aggregators</h4>
+                                <p>Embed ready-to-style widgets from specialized platforms like <strong>Juicer.io</strong>, <strong>Curator.io</strong>, or <strong>Elfsight</strong>.</p>
+                                <p class="method-tip">💡 Recommended for production: handles caching, API limits, and token refreshes automatically.</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 

@@ -2092,6 +2092,389 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
     }
 }
 
+/* --- SOCIAL LOUNGE PAGE STYLING --- */
+.social-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.social-intro h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--c-bronze-dark);
+    margin-bottom: 1rem;
+}
+
+.social-intro p {
+    font-size: 1.1rem;
+    color: var(--c-bronze-med);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.social-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.social-tab-btn {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    color: var(--c-bronze-med);
+    padding: 0.7rem 1.6rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+    backdrop-filter: blur(10px);
+}
+
+.social-tab-btn:hover, .social-tab-btn.active {
+    background: var(--c-red-accent);
+    color: #FFF;
+    border-color: var(--c-red-accent);
+    box-shadow: 0 8px 22px rgba(181, 72, 63, 0.22);
+}
+
+.social-feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Post Cards */
+.social-post-card {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    padding: 1.5rem;
+    backdrop-filter: blur(15px);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.social-post-card:hover {
+    transform: translateY(-8px);
+    background: var(--glass-bg-hover);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(214, 163, 115, 0.4);
+}
+
+/* Header */
+.social-post-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.social-post-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--c-gold-accent);
+    object-fit: cover;
+}
+
+.social-post-meta {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.social-post-username {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--c-bronze-dark);
+}
+
+.social-post-time {
+    font-size: 0.75rem;
+    color: var(--c-bronze-med);
+    opacity: 0.8;
+}
+
+/* Network Badges */
+.social-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+}
+
+.network-ig {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #FFF;
+}
+
+.network-tt {
+    background: #000;
+    color: #FFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.network-yt {
+    background: #FF0000;
+    color: #FFF;
+}
+
+/* Post Media Container */
+.social-post-media-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    background: #000;
+}
+
+.social-post-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.social-post-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.social-play-overlay {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFF;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.social-post-card:hover .social-post-img {
+    transform: scale(1.05);
+}
+
+/* Actions */
+.social-post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.social-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--c-bronze-med);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+    background: rgba(62, 39, 24, 0.04);
+}
+
+.social-action-btn:hover {
+    transform: scale(1.05);
+    background: rgba(62, 39, 24, 0.08);
+}
+
+body.dark-theme .social-action-btn {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--c-bronze-dark);
+}
+
+body.dark-theme .social-action-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.social-action-btn.liked {
+    color: var(--c-red-accent) !important;
+    background: var(--c-red-light) !important;
+}
+
+body.dark-theme .social-action-btn.liked {
+    background: rgba(181, 72, 63, 0.2) !important;
+}
+
+/* Caption Body */
+.social-post-body {
+    flex-grow: 1;
+}
+
+.social-post-caption {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--c-bronze-med);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Social Redirect Notification Alert Box */
+.social-redirect-alert {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    background: var(--c-bronze-dark);
+    color: var(--bg-base);
+    border: 1px solid var(--c-gold-accent);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    z-index: 10000;
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.social-redirect-alert.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.redirect-alert-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Developer Integration Card styling */
+.social-integration-card {
+    background: var(--glass-bg);
+    border: 2px solid var(--c-gold-accent);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    padding: 3rem;
+    margin-top: 5rem;
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .social-integration-card {
+    border-color: rgba(212, 163, 115, 0.4);
+}
+
+.integration-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--c-gold-accent);
+    color: var(--c-bronze-dark);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.6rem 1.5rem;
+    border-bottom-left-radius: var(--radius-sm);
+}
+
+.social-integration-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--c-bronze-dark);
+    margin-bottom: 0.8rem;
+}
+
+.social-integration-card > p {
+    font-size: 1.05rem;
+    color: var(--c-bronze-med);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.integration-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.method-card {
+    background: rgba(62, 39, 24, 0.03);
+    border: 1px solid rgba(62, 39, 24, 0.08);
+    border-radius: var(--radius-md);
+    padding: 1.8rem;
+    transition: var(--transition-smooth);
+}
+
+.method-card:hover {
+    transform: translateY(-4px);
+    background: rgba(62, 39, 24, 0.05);
+}
+
+body.dark-theme .method-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(212, 163, 115, 0.12);
+}
+
+body.dark-theme .method-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.method-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--c-bronze-dark);
+    margin-bottom: 0.8rem;
+}
+
+.method-card p {
+    font-size: 0.9rem;
+    color: var(--c-bronze-med);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.method-tip {
+    font-weight: 600;
+    background: rgba(212, 163, 115, 0.12);
+    border-left: 3px solid var(--c-gold-accent);
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem !important;
+}
+
+body.dark-theme .method-tip {
+    background: rgba(212, 163, 115, 0.08);
+}
+
 /* --- RESPONSIVE ADAPTATIONS --- */
 @media (max-width: 1200px) {
     .left-main-section {
@@ -2186,3 +2569,31 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
         left: 20px;
     }
 }
+
+@media (max-width: 768px) {
+    .social-intro h2 {
+        font-size: 2.2rem;
+    }
+    .social-tabs {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    .social-tab-btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    .social-integration-card {
+        padding: 1.8rem;
+        margin-top: 3rem;
+    }
+    .social-integration-card h3 {
+        font-size: 1.6rem;
+    }
+    .integration-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 1rem;
+        border-radius: var(--radius-sm);
+    }
+}
+
