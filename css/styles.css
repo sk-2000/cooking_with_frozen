@@ -124,6 +124,107 @@ body.dark-theme .fb-card-footer {
     color: rgba(245, 235, 224, 0.35);
 }
 
+/* --- Premium Dark Mode Widget & Modal Overrides --- */
+body.dark-theme .pizza-menu-btn {
+    background: rgba(245, 235, 224, 0.05);
+    border-color: rgba(212, 163, 115, 0.2);
+    color: var(--c-bronze-dark);
+}
+
+body.dark-theme .pizza-menu-btn:hover {
+    background: rgba(212, 163, 115, 0.18);
+}
+
+body.dark-theme .recipe-modal-card {
+    background: rgba(26, 15, 10, 0.96);
+    border: 2px solid rgba(212, 163, 115, 0.35);
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.7);
+}
+
+body.dark-theme .ingredients-list li {
+    border-bottom-color: rgba(212, 163, 115, 0.15);
+}
+
+body.dark-theme .step-num {
+    background: var(--c-gold-accent);
+    color: #150B06;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .modal-meta-grid {
+    background: rgba(212, 163, 115, 0.06);
+    border: 1px solid rgba(212, 163, 115, 0.12);
+}
+
+body.dark-theme .navigation-bar:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), inset 0 0 15px rgba(212, 163, 115, 0.1);
+    border-color: rgba(212, 163, 115, 0.45);
+}
+
+body.dark-theme .mascot-avatar-large {
+    border: 4px solid var(--c-gold-accent);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 163, 115, 0.25);
+}
+
+body.dark-theme .horizontal-nav-arrow.go-right {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    color: var(--c-bronze-dark);
+}
+
+body.dark-theme .horizontal-nav-arrow.go-right:hover {
+    background: var(--c-gold-accent);
+    color: #150B06;
+    border-color: var(--c-gold-accent);
+    box-shadow: 0 12px 30px rgba(212, 163, 115, 0.35);
+}
+
+body.dark-theme .timeline-dot {
+    background: #150B06;
+    border-color: var(--c-gold-accent);
+    box-shadow: 0 0 0 5px rgba(212, 163, 115, 0.15);
+}
+
+body.dark-theme .timeline-item:hover .timeline-dot {
+    background: var(--c-red-accent);
+    border-color: #FFF;
+    box-shadow: 0 0 0 8px rgba(181, 72, 63, 0.45);
+}
+
+body.dark-theme .recipe-card:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), inset 0 0 20px rgba(212, 163, 115, 0.15);
+    border-color: rgba(212, 163, 115, 0.45);
+}
+
+body.dark-theme .ing-badge {
+    background: rgba(212, 163, 115, 0.08);
+    color: var(--c-bronze-dark);
+    border: 1px solid rgba(212, 163, 115, 0.25);
+}
+
+body.dark-theme .local-tab-btn {
+    border-color: rgba(212, 163, 115, 0.18);
+}
+
+body.dark-theme .local-tab-btn:hover, body.dark-theme .local-tab-btn.active {
+    background: var(--c-red-accent);
+    color: #FFF;
+    border-color: var(--c-red-accent);
+    box-shadow: 0 8px 22px rgba(181, 72, 63, 0.4);
+}
+
+body.dark-theme .filter-btn:hover, body.dark-theme .filter-btn.active {
+    background: var(--c-gold-accent);
+    color: #150B06;
+    border-color: var(--c-gold-accent);
+    box-shadow: 0 8px 22px rgba(212, 163, 115, 0.3);
+}
+
+body.dark-theme .cuisine-detail-card:hover {
+    border-color: rgba(212, 163, 115, 0.45);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
+}
+
 /* --- BASE STYLING --- */
 * {
     box-sizing: border-box;
@@ -405,6 +506,11 @@ body.dark-theme .parallax-item {
     margin: 1.5rem 4rem 2rem 4rem;
     z-index: 100;
     position: relative;
+    transition: box-shadow 0.4s var(--transition-snappy), border-color 0.4s var(--transition-snappy), background 0.4s var(--transition-snappy);
+}
+.navigation-bar:hover {
+    box-shadow: 0 20px 40px rgba(62, 39, 24, 0.09), inset 0 0 12px rgba(212, 163, 115, 0.05);
+    border-color: rgba(212, 163, 115, 0.35);
 }
 
 /* Left: Pizza Hamburger button */
@@ -451,6 +557,10 @@ body.dark-theme .parallax-item {
     border: 2px solid var(--c-gold-accent);
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.nav-logo-wrapper:hover .nav-avatar {
+    transform: scale(1.12) rotate(360deg);
 }
 
 .brand-title {
@@ -726,8 +836,8 @@ body.dark-theme .theme-toggle-btn {
 .recipe-card:hover {
     transform: translateY(-8px) scale(1.01);
     background: var(--glass-bg-hover);
-    box-shadow: var(--glass-shadow-hover);
-    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgba(62, 39, 24, 0.15), inset 0 0 15px rgba(212, 163, 115, 0.1);
+    border-color: rgba(212, 163, 115, 0.5);
 }
 
 .recipe-card-video {
