@@ -561,6 +561,9 @@ class App {
         // Init 3D Parallax floating background
         this.setup3DParallax();
 
+        // Init hover videos for recipe cards
+        this.setupRecipeCardVideos();
+
         // Size changes listener
         window.addEventListener('resize', () => this.onResize());
         window.addEventListener('mousemove', (e) => {
@@ -1014,6 +1017,39 @@ class App {
             if (e.target === modal) {
                 closeModalFunc();
             }
+        });
+    }
+
+    /* --- HOME RECIPE CARD VIDEOS TRIGGER --- */
+    setupRecipeCardVideos() {
+        const cards = document.querySelectorAll('.recipe-card');
+        cards.forEach(card => {
+            const video = card.querySelector('.recipe-card-video');
+            if (!video) return;
+
+            video.muted = true;
+            video.loop = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.preload = "auto";
+
+            card.addEventListener('mouseenter', () => {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Hover recipe video play prevented:", error);
+                    });
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                setTimeout(() => {
+                    if (video.paused) {
+                        video.currentTime = 0; // Rewind for snappy play next time
+                    }
+                }, 100);
+            });
         });
     }
 

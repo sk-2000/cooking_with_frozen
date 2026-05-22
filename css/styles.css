@@ -52,6 +52,78 @@ body.dark-theme {
     --glass-shadow-hover: 0 24px 48px rgba(0, 0, 0, 0.6);
 }
 
+/* Dark Theme Component Overrides for High Font Contrast and Visibility */
+body.dark-theme .sidebar-menu {
+    background: rgba(26, 15, 10, 0.88);
+    border-right: 2px solid rgba(212, 163, 115, 0.25);
+    box-shadow: 15px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .sidebar-link {
+    background: rgba(212, 163, 115, 0.04);
+    color: var(--c-bronze-dark); /* becomes #F5EBE0 */
+}
+
+body.dark-theme .sidebar-link:hover, 
+body.dark-theme .sidebar-link.active {
+    background: rgba(212, 163, 115, 0.16);
+    color: var(--c-gold-accent);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(212, 163, 115, 0.25);
+}
+
+body.dark-theme .close-sidebar-btn {
+    color: var(--c-bronze-med); /* becomes #D4A373 */
+}
+
+body.dark-theme .close-sidebar-btn:hover {
+    color: var(--c-red-accent);
+}
+
+body.dark-theme .form-group input, 
+body.dark-theme .form-group textarea {
+    background: rgba(26, 15, 10, 0.55);
+    border: 2px solid rgba(212, 163, 115, 0.16);
+    color: var(--c-bronze-dark); /* becomes #F5EBE0 */
+}
+
+body.dark-theme .form-group input:focus, 
+body.dark-theme .form-group textarea:focus {
+    background: rgba(26, 15, 10, 0.88);
+    border-color: var(--c-gold-accent);
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.2);
+}
+
+body.dark-theme .form-group input::placeholder, 
+body.dark-theme .form-group textarea::placeholder {
+    color: rgba(245, 235, 224, 0.38);
+}
+
+body.dark-theme .rating-selector-wrapper {
+    background: rgba(26, 15, 10, 0.4);
+    border: 2px solid rgba(212, 163, 115, 0.15);
+}
+
+body.dark-theme .rating-emoji:hover {
+    background: rgba(212, 163, 115, 0.2);
+}
+
+body.dark-theme .submit-feedback-btn {
+    background: var(--c-gold-accent); /* beautiful glowing gold #D4A373 */
+    color: #150B06; /* dark base color */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .submit-feedback-btn:hover {
+    background: var(--c-red-accent);
+    color: #FFF;
+    box-shadow: 0 10px 28px rgba(181, 72, 63, 0.4);
+}
+
+body.dark-theme .fb-card-footer {
+    color: rgba(245, 235, 224, 0.35);
+}
+
 /* --- BASE STYLING --- */
 * {
     box-sizing: border-box;
@@ -656,6 +728,35 @@ body.dark-theme .theme-toggle-btn {
     background: var(--glass-bg-hover);
     box-shadow: var(--glass-shadow-hover);
     border-color: rgba(255, 255, 255, 0.9);
+}
+
+.recipe-card-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.recipe-card:hover .recipe-card-video {
+    opacity: 0.28;
+}
+
+body.dark-theme .recipe-card:hover .recipe-card-video {
+    opacity: 0.22;
+}
+
+.recipe-card h3,
+.recipe-card p,
+.recipe-card-media,
+.recipe-meta-tags {
+    position: relative;
+    z-index: 2;
 }
 
 /* Floating colored blob inside cards */
