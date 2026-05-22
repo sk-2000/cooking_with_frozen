@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking with Frozen | Luxury Liquid-Glass Vegan & Vegetarian Culinary Space</title>
+    <meta name="description" content="Immerse in 'Cooking with Frozen', a premier high-aesthetic digital space celebrating global vegan and vegetarian cuisines with luxurious liquid-glass designs, interactive timelines, and food-trailing cursors.">
+    
+    <!-- Design Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="assets/chef_avatar.png">
+</head>
+<body>
+
+    <!-- Dynamic Liquid Blob Particle Background -->
+    <canvas id="liquid-canvas"></canvas>
+
+    <!-- 3D Parallax Floating Food Layer -->
+    <div class="parallax-food-layer" id="parallax-food-layer">
+        <div class="parallax-item food-tomato" data-depth="0.35" style="top: 15%; left: 8%;">🍅</div>
+        <div class="parallax-item food-basil" data-depth="0.2" style="top: 65%; left: 5%;">🌿</div>
+        <div class="parallax-item food-chili" data-depth="0.45" style="top: 80%; left: 85%;">🌶️</div>
+        <div class="parallax-item food-avocado" data-depth="0.25" style="top: 20%; left: 88%;">🥑</div>
+        <div class="parallax-item food-mushroom" data-depth="0.3" style="top: 45%; left: 92%;">🍄</div>
+    </div>
+
+    <!-- Slide-out Glass Side Menu Drawer -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="sidebar-menu" id="sidebar-menu">
+        <button class="close-sidebar-btn" id="close-sidebar-btn" aria-label="Close sidebar menu">×</button>
+        <div class="sidebar-brand-header">
+            <img src="assets/chef_avatar.png" alt="Chef Avatar Menu">
+            <h4>cooking with frozen</h4>
+        </div>
+        <nav class="sidebar-links-list" aria-label="Sidebar navigation">
+            <a href="#home" class="sidebar-link active" data-target="home">Home</a>
+            <a href="#history" class="sidebar-link" data-target="history">Our History</a>
+            <a href="#local-guide" class="sidebar-link" data-target="local-guide">Local Food Guide</a>
+            <a href="#cuisines" class="sidebar-link" data-target="cuisines">Global Cuisines</a>
+            <a href="#feedback" class="sidebar-link" data-target="feedback">Feedback Lounge</a>
+        </nav>
+    </div>
+
+    <!-- Parent Two-Screen Horizontal Canvas -->
+    <div class="app-container">
+
+        <!-- ================= SCREEN 1: LEFT SPA CONTENT VIEW ================= -->
+        <div class="screen-view left-screen-view">
+            
+            <!-- Centered Logo sticky glass navigation header -->
+            <header class="navigation-bar" id="app-header">
+                <!-- Left: Pizza hamburger menu slice -->
+                <button class="pizza-menu-btn" id="pizza-menu-btn" aria-label="Open navigation menu" data-cursor-food="🍕">🍕</button>
+                
+                <!-- Center: Logo branding -->
+                <a href="#home" class="nav-logo-wrapper brand-logo-link" data-target="home" data-cursor-food="🍳">
+                    <img src="assets/chef_avatar.png" alt="Cooking with Frozen Chef Logo" class="nav-avatar">
+                    <span class="brand-title">cooking with frozen</span>
+                </a>
+                
+                <!-- Right: Theme Toggle & Chef badge icon -->
+                <div class="nav-right-wrapper">
+                    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark mode" data-cursor-food="🌙">🌙</button>
+                    <div class="nav-right-badge" title="Professional Vegan Kitchen">👩‍🍳</div>
+                </div>
+            </header>
+
+            <!-- Scrolling Content Wrapper -->
+            <main class="left-main-section" id="main-content-scroll">
+                
+                <!-- Floating Navigation right-arrow on Home page -->
+                <button class="horizontal-nav-arrow go-right" id="horizontal-go-right" title="Slide to Video Showcase" data-cursor-food="➡️">➔</button>
+
+                <!-- ================= HOME PAGE SECTION ================= -->
+                <section class="page-section active" id="home">
+                    
+                    <!-- Central Mascot Emblem & Slogan -->
+                    <div class="central-mascot-container">
+                        <img src="assets/chef_avatar.png" alt="Chef Mascot illustration" class="mascot-avatar-large">
+                        <div class="mascot-brand-slug">COOKING_WITH_FROZEN2307</div>
+                        <div class="heart-divider">♥</div>
+                        
+                        <h1 class="hero-title">Simple<br>Ingredients<br>Amazing Recipes</h1>
+                        
+                        <div class="hero-subtitle">
+                            <span>Easy</span> • <span>Tasty</span> • <span>Homemade</span>
+                        </div>
+                    </div>
+
+                    <!-- 4-Card Delicious Food Showcase Grid (Layout matching screenshot) -->
+                    <div class="recipe-grid">
+                        
+                        <!-- Card 1: Pizza -->
+                        <article class="recipe-card" data-recipe="pizza" data-cursor-food="🍕">
+                            <div class="card-liquid-blob"></div>
+                            <div class="recipe-card-media">🍕</div>
+                            <h3>Garden Neapolitan Pizza</h3>
+                            <p>Slow-fermented artisan sourdough topped with cashew mozzarella and fresh sweet basil pearls.</p>
+                            <div class="recipe-meta-tags">
+                                <span class="tag-time">⏱️ 35m</span>
+                                <span class="tag-difficulty">⭐ Medium</span>
+                            </div>
+                        </article>
+
+                        <!-- Card 2: Custard Dessert -->
+                        <article class="recipe-card" data-recipe="parfait" data-cursor-food="🧁">
+                            <div class="card-liquid-blob"></div>
+                            <div class="recipe-card-media">🍨</div>
+                            <h3>Coconut Fruit Custard</h3>
+                            <p>Velvety coconut cream custard layered with fresh organic berries and roasted seed crumble.</p>
+                            <div class="recipe-meta-tags">
+                                <span class="tag-time">⏱️ 20m</span>
+                                <span class="tag-difficulty">⭐ Easy</span>
+                            </div>
+                        </article>
+
+                        <!-- Card 3: Noodles -->
+                        <article class="recipe-card" data-recipe="noodles" data-cursor-food="🍜">
+                            <div class="card-liquid-blob"></div>
+                            <div class="recipe-card-media">🍜</div>
+                            <h3>Handmade Chili Noodles</h3>
+                            <p>Tender wok-tossed handmade ribbon noodles coated in ginger garlic Szechuan sesame glaze.</p>
+                            <div class="recipe-meta-tags">
+                                <span class="tag-time">⏱️ 30m</span>
+                                <span class="tag-difficulty">⭐ Medium</span>
+                            </div>
+                        </article>
+
+                        <!-- Card 4: Craft Burger -->
+                        <article class="recipe-card" data-recipe="burger" data-cursor-food="🍔">
+                            <div class="card-liquid-blob"></div>
+                            <div class="recipe-card-media">🍔</div>
+                            <h3>Smoked Jackfruit Burger</h3>
+                            <p>Artisanal jackfruit patty on toasted brioche with avocado garlic spread.</p>
+                            <div class="recipe-meta-tags">
+                                <span class="tag-time">⏱️ 45m</span>
+                                <span class="tag-difficulty">⭐ Hard</span>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- Footer Slogan Matching Screenshot -->
+                    <div class="section-footer-slogan">
+                        COOK • EAT • REPEAT ♡
+                    </div>
+                </section>
+
+                <!-- ================= OUR HISTORY SECTION ================= -->
+                <section class="page-section" id="history">
+                    <div class="history-intro">
+                        <div class="mascot-brand-slug">The Story of Culinary Craft</div>
+                        <h2>How We Conquered the Fire</h2>
+                        <p>Cooking is not just nutrition—it is the ultimate human alchemy. Take a stroll down the organic milestones that shaped vegan, vegetarian, and fire-tossed cuisines across historical epochs.</p>
+                    </div>
+
+                    <!-- Interactive Timeline -->
+                    <div class="history-timeline">
+                        
+                        <!-- Milestone 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">1.8 Million Years Ago</span>
+                                    <h3>The Dawn of Spark</h3>
+                                    <p>Homo erectus discovers fire cooking, tenderizing wild roots, plants, and seeds, which unlocks highly digestible calories and ignites brain evolution.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">10,000 BCE</span>
+                                    <h3>The Clay Pot Revolution</h3>
+                                    <p>Ancient Mesopotamia invents fired clay pottery. This allows human tribes to boil grains, brew wild herbs, and create the world's very first vegetable stews.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 3: Spices & Noodles -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">2000 BCE</span>
+                                    <h3>Ancient Ribbons & Spices</h3>
+                                    <p>Indus Valley tribes grind ginger, garlic, and turmeric to simmer early curries, while ancient Chinese cooks stretch ground millet flour into the world's very first ribbon noodles.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">500 BCE</span>
+                                    <h3>Pythagoras & Vegetarianism</h3>
+                                    <p>Ancient philosopher Pythagoras establishes the "Pythagorean Diet" in Greece, teaching respect for all living things and popularizing plant-based nourishment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 5 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">1796 CE</span>
+                                    <h3>First Recipe Scrolls</h3>
+                                    <p>Amelia Simmons publishes "American Cookery," introducing systematic measurements and written recipe structures, turning cooking from trial into culinary art.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 6: The Margherita -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">1889 CE</span>
+                                    <h3>The Royal Pizza Margherita</h3>
+                                    <p>Naples chef Raffaele Esposito crafts a royal flatbread using tomatoes, mozzarella, and green basil leaves to honor Queen Margherita, initiating the global modern pizza craze.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 7: The Burger -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">1904 CE</span>
+                                    <h3>The Bun & Patty Revolution</h3>
+                                    <p>At the St. Louis World's Fair, the modern hamburger debuts, sandwiching hot seared patties inside split buns and paving the path for modern artisanal plant-based burgers.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 8 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-node">
+                                <div class="timeline-card">
+                                    <span class="timeline-date">Present Day</span>
+                                    <h3>Liquid Glass Molecular Dining</h3>
+                                    <p>Culinary fields embrace sensory chemistry and plant physics, crafting plant burgers and coconut custards that rival historical masterpieces in texture and taste.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ================= NEW: LOCAL FOOD GUIDE PAGE ================= -->
+                <section class="page-section" id="local-guide">
+                    <div class="explorer-intro">
+                        <div class="mascot-brand-slug">Desi Culinary Secrets</div>
+                        <h2>City & State-Wise Local Recommendations</h2>
+                        <p>Explore traditional regional vegetarian street foods, authentic delicacies, and legendary dining spots across specific Indian food hubs.</p>
+                    </div>
+
+                    <!-- City Selection Tabs -->
+                    <div class="local-tabs" id="local-city-tabs" data-cursor-food="📍">
+                        <button class="local-tab-btn active" data-city="raipur">Raipur</button>
+                        <button class="local-tab-btn" data-city="delhi">Delhi</button>
+                        <button class="local-tab-btn" data-city="lucknow">Lucknow</button>
+                        <button class="local-tab-btn" data-city="banaras">Banaras</button>
+                        <button class="local-tab-btn" data-city="prayagraj">Prayagraj</button>
+                        <button class="local-tab-btn" data-city="mumbai">Mumbai</button>
+                    </div>
+
+                    <!-- Custom Loaded Content -->
+                    <div class="local-guide-container" id="local-guide-content">
+                        <!-- Loaded dynamically via js/app.js -->
+                    </div>
+                </section>
+
+                <!-- ================= GLOBAL VEGAN CUISINES ================= -->
+                <section class="page-section" id="cuisines">
+                    <div class="explorer-intro">
+                        <div class="mascot-brand-slug">Global Plant Abundance</div>
+                        <h2>Vegan & Vegetarian World Cuisines</h2>
+                        <p>Explore traditional plant-forward culinary heritages from different corners of our gorgeous planet, each containing authentic textures and aromatic spices.</p>
+                    </div>
+
+                    <!-- Region Filters -->
+                    <div class="filter-tabs" id="cuisine-filters" data-cursor-food="🌍">
+                        <button class="filter-btn active" data-filter="all">All Regions</button>
+                        <button class="filter-btn" data-filter="asia">Asia</button>
+                        <button class="filter-btn" data-filter="europe">Europe</button>
+                        <button class="filter-btn" data-filter="americas">Americas</button>
+                        <button class="filter-btn" data-filter="middle-east">Middle-East</button>
+                        <button class="filter-btn" data-filter="africa">Africa</button>
+                    </div>
+
+                    <!-- Interactive Cuisines Grid Loader -->
+                    <div class="cuisines-grid-container">
+                        <div class="cuisines-grid" id="cuisines-grid">
+                            <!-- Loaded dynamically via js/app.js -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= FEEDBACK LOUNGE ================= -->
+                <section class="page-section" id="feedback">
+                    <div class="feedback-intro">
+                        <div class="mascot-brand-slug">Culinary Wall of Love</div>
+                        <h2>Share Your Culinary Thoughts</h2>
+                        <p>We are dedicated to simple ingredients and amazing tastes. Leave a review, rank your favorite food items, and join the Cooking with Frozen community!</p>
+                    </div>
+
+                    <div class="feedback-split-layout">
+                        
+                        <!-- Submit Feedback Glass Form -->
+                        <div class="feedback-form-card">
+                            <h3>Write to the Chef</h3>
+                            <form id="feedback-form" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="feedback-name">Your Beautiful Name</label>
+                                    <input type="text" id="feedback-name" placeholder="e.g. Clara Oswald" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Rank Your Favorite Item</label>
+                                    <div class="rating-selector-wrapper">
+                                        <div class="rating-emoji" data-value="🍕" title="Garden Pizza">🍕</div>
+                                        <div class="rating-emoji" data-value="🍨" title="Fruit Custard">🍨</div>
+                                        <div class="rating-emoji" data-value="🍜" title="Wok Noodles">🍜</div>
+                                        <div class="rating-emoji" data-value="🍔" title="Craft Burger">🍔</div>
+                                        <div class="rating-emoji" data-value="🥑" title="Healthy Avo">🥑</div>
+                                    </div>
+                                    <input type="hidden" id="selected-rating" name="selected-rating">
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback-text">Your Culinary Notes & Review</label>
+                                    <textarea id="feedback-text" rows="5" placeholder="Share your experience cooking these amazing recipes..." required></textarea>
+                                </div>
+                                <button type="submit" class="submit-feedback-btn">
+                                    <span>Send Sweet Love</span> ✨
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Live Message Board (LocalStorage linked) -->
+                        <div class="feedback-board-container">
+                            <h3 class="fb-board-title" style="margin-bottom: 1.5rem; font-family: var(--font-heading); font-size: 1.6rem;">Live Board</h3>
+                            <div id="feedback-board">
+                                <!-- Populated dynamically via js/app.js -->
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- ================= SCREEN 2: RIGHT SPLIT MEDIA SECTION (Vertical Video Accordion) ================= -->
+        <aside class="screen-view right-screen-view" aria-label="Regional cuisine media loops">
+            
+            <!-- Floating Navigation left-arrow -->
+            <button class="horizontal-nav-arrow go-left" id="horizontal-go-left" title="Back to Home Page" data-cursor-food="⬅️">➔</button>
+
+            <!-- Panel 1: Italian -->
+            <div class="media-panel" data-cuisine="italian" data-cursor-food="🍕">
+                <div class="media-panel-glass-backdrop"></div>
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-a-fresh-pizza-41586-large.mp4" loop muted playsinline></video>
+                <div class="panel-content">
+                    <div class="panel-emoji">🍕</div>
+                    <div class="panel-vertical-title">ITALIAN CLASSICS</div>
+                    <p class="panel-description">Bake the perfect thin-crust Neapolitan pizzas and vegetable ribollitas, hand-crafted with rich fresh tomato bases.</p>
+                </div>
+            </div>
+
+            <!-- Panel 2: Indian -->
+            <div class="media-panel" data-cuisine="indian" data-cursor-food="🍛">
+                <div class="media-panel-glass-backdrop"></div>
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-spices-falling-on-a-table-40182-large.mp4" loop muted playsinline></video>
+                <div class="panel-content">
+                    <div class="panel-emoji">🍛</div>
+                    <div class="panel-vertical-title">INDIAN SPICE</div>
+                    <p class="panel-description">Unlock complex vegetarian spices, velvety royal kormas, slow-simmered dhal stews, and fluffy saffron basmati.</p>
+                </div>
+            </div>
+
+            <!-- Panel 3: Japanese -->
+            <div class="media-panel" data-cuisine="japanese" data-cursor-food="🍜">
+                <div class="media-panel-glass-backdrop"></div>
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-tossing-vegetables-in-a-wok-41572-large.mp4" loop muted playsinline></video>
+                <div class="panel-content">
+                    <div class="panel-emoji">🍜</div>
+                    <div class="panel-vertical-title">JAPANESE SIMPLE</div>
+                    <p class="panel-description">Discover the tranquil balance of forest mushroom broth, dashi infusions, fresh udon, and tender local tofu blocks.</p>
+                </div>
+            </div>
+
+            <!-- Panel 4: Mexican -->
+            <div class="media-panel" data-cuisine="mexican" data-cursor-food="🌮">
+                <div class="media-panel-glass-backdrop"></div>
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-slicing-fresh-avocado-on-cutting-board-41583-large.mp4" loop muted playsinline></video>
+                <div class="panel-content">
+                    <div class="panel-emoji">🌮</div>
+                    <div class="panel-vertical-title">MEXICAN FLAVOR</div>
+                    <p class="panel-description">Roll pressed corn tortillas filled with sweet roasted potato, black beans, topped with dark chocolate mole negro sauces.</p>
+                </div>
+            </div>
+
+            <!-- Panel 5: Dessert/Baking -->
+            <div class="media-panel" data-cuisine="dessert" data-cursor-food="🧁">
+                <div class="media-panel-glass-backdrop"></div>
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-pouring-chocolate-sauce-on-cake-41585-large.mp4" loop muted playsinline></video>
+                <div class="panel-content">
+                    <div class="panel-emoji">🍨</div>
+                    <div class="panel-vertical-title">SWEET HARVEST</div>
+                    <p class="panel-description">Craft guilt-free coconut parfaits, berry gelees, gluten-free crisps, and chocolate infusions from nature's pantry.</p>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- ================= RECIPE DETAIL GLASS MODAL ================= -->
+    <div class="recipe-modal-container" id="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="modal-recipe-title">
+        <div class="recipe-modal-card">
+            <button class="close-modal" aria-label="Close details modal">×</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-recipe-title">Garden Neapolitan Pizza</h2>
+                <p class="modal-tagline">Slow-fermented artisan sourdough topped with cashew mozzarella and fresh sweet basil pearls.</p>
+            </div>
+
+            <!-- Meta statistics -->
+            <div class="modal-meta-grid">
+                <div class="meta-item meta-prep">⏱️ Prep: 35 mins</div>
+                <div class="meta-item meta-cook">🍳 Cook: 10 mins</div>
+                <div class="meta-item meta-servings">👥 Servings: 2</div>
+                <div class="meta-item meta-diff">⭐ Difficulty: Medium</div>
+            </div>
+
+            <!-- Split ingredients and instructions -->
+            <div class="modal-content-split">
+                
+                <section class="modal-ingredients-column">
+                    <h4>Ingredients Checklist</h4>
+                    <ul class="ingredients-list">
+                        <!-- Loaded dynamically -->
+                    </ul>
+                </section>
+
+                <section class="modal-steps-column">
+                    <h4>Step-by-Step Cooking Steps</h4>
+                    <ol class="steps-list">
+                        <!-- Loaded dynamically -->
+                    </ol>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Components -->
+    <script src="js/cursor.js"></script>
+    <script src="js/media.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
