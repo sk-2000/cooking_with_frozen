@@ -1348,19 +1348,28 @@ class App {
                 card.style.animationDelay = `${index * 0.06}s`;
 
                 let networkBadge = '';
+                let handle = '@cooking_with_frozen';
+                let link = 'https://www.instagram.com/cooking_with_frozen2307?igsh=YzU5YWNmczB1b3lq';
+
                 if (post.network === 'instagram') {
                     networkBadge = `<span class="social-badge network-ig" title="Instagram Post">Instagram</span>`;
+                    handle = '@cooking_with_frozen2307';
+                    link = 'https://www.instagram.com/cooking_with_frozen2307?igsh=YzU5YWNmczB1b3lq';
                 } else if (post.network === 'tiktok') {
                     networkBadge = `<span class="social-badge network-tt" title="TikTok Reel">TikTok</span>`;
+                    handle = '@cookingwithfrozen';
+                    link = 'https://www.tiktok.com/@cookingwithfrozen';
                 } else {
                     networkBadge = `<span class="social-badge network-yt" title="YouTube Vlog">YouTube</span>`;
+                    handle = '@cookingwithfrozen';
+                    link = 'https://youtube.com/@cookingwithfrozen?si=BBOC8GGj1Xt97l6N';
                 }
 
                 card.innerHTML = `
                     <div class="social-post-header">
                         <img src="assets/chef_avatar.png" alt="Chef Avatar" class="social-post-avatar">
                         <div class="social-post-meta">
-                            <span class="social-post-username">@cooking_with_frozen</span>
+                            <span class="social-post-username">${handle}</span>
                             <span class="social-post-time">${post.date}</span>
                         </div>
                         ${networkBadge}
@@ -1431,7 +1440,7 @@ class App {
                     alertBox.className = 'social-redirect-alert';
                     alertBox.innerHTML = `
                         <div class="redirect-alert-content">
-                            <span>🔗 Redirecting you to <strong>@cooking_with_frozen</strong> on ${post.network.charAt(0).toUpperCase() + post.network.slice(1)}...</span>
+                            <span>🔗 Redirecting to <strong>${handle}</strong> on ${post.network.charAt(0).toUpperCase() + post.network.slice(1)}...</span>
                         </div>
                     `;
                     document.body.appendChild(alertBox);
@@ -1439,7 +1448,9 @@ class App {
                     setTimeout(() => {
                         alertBox.classList.remove('show');
                         setTimeout(() => alertBox.remove(), 400);
-                    }, 2500);
+                        // Open external link in a new window tab
+                        window.open(link, '_blank');
+                    }, 1200);
                 });
 
                 grid.appendChild(card);
