@@ -1285,7 +1285,7 @@ class App {
             },
             {
                 id: 2,
-                network: "tiktok",
+                network: "instagram",
                 date: "5 hours ago",
                 caption: "Wok-toss Szechuan Ribbon Noodles in under 10 minutes! 🍜 Thick handmade noodles glazed in spicy chili oil, minced garlic, ginger, and roasted peanut crunch. So snappy and delicious! 🌶️ #veganrecipes #ramen #easycooking #quickmeals",
                 likes: 1205,
@@ -1315,7 +1315,7 @@ class App {
             },
             {
                 id: 5,
-                network: "tiktok",
+                network: "instagram",
                 date: "4 days ago",
                 caption: "Guilt-free Coconut Fruit Custard cups layered with sweet ripe organic mango gelee and raspberry seeds! 🍨 The perfect quick weekend dessert for the family. #vegandessert #healthycustard #coconutcream #fruitparfait",
                 likes: 980,
@@ -1344,7 +1344,7 @@ class App {
             filtered.forEach((post, index) => {
                 const card = document.createElement('article');
                 card.className = 'social-post-card';
-                card.setAttribute('data-cursor-food', post.network === 'instagram' ? '📸' : post.network === 'tiktok' ? '🎵' : '📺');
+                card.setAttribute('data-cursor-food', post.network === 'instagram' ? '📸' : '📺');
                 card.style.animationDelay = `${index * 0.06}s`;
 
                 let networkBadge = '';
@@ -1355,10 +1355,6 @@ class App {
                     networkBadge = `<span class="social-badge network-ig" title="Instagram Post">Instagram</span>`;
                     handle = '@cooking_with_frozen2307';
                     link = 'https://www.instagram.com/cooking_with_frozen2307?igsh=YzU5YWNmczB1b3lq';
-                } else if (post.network === 'tiktok') {
-                    networkBadge = `<span class="social-badge network-tt" title="TikTok Reel">TikTok</span>`;
-                    handle = '@cookingwithfrozen';
-                    link = 'https://www.tiktok.com/@cookingwithfrozen';
                 } else {
                     networkBadge = `<span class="social-badge network-yt" title="YouTube Vlog">YouTube</span>`;
                     handle = '@cookingwithfrozen';
