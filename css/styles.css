@@ -1202,8 +1202,11 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
     justify-content: flex-end;
     align-items: center;
     padding: 2.5rem 1rem;
-    transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .media-panel:last-child {
@@ -1212,6 +1215,23 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
 
 .media-panel.expanded {
     flex: 4;
+}
+
+/* Individual Gourmet Cuisine Unsplash Background Media */
+.media-panel[data-cuisine="italian"] {
+    background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000');
+}
+.media-panel[data-cuisine="indian"] {
+    background-image: url('https://images.unsplash.com/photo-1585938338392-50a59970d2ee?q=80&w=1000');
+}
+.media-panel[data-cuisine="japanese"] {
+    background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=1000');
+}
+.media-panel[data-cuisine="mexican"] {
+    background-image: url('https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=1000');
+}
+.media-panel[data-cuisine="dessert"] {
+    background-image: url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1000');
 }
 
 /* Video Frame elements */
@@ -1243,7 +1263,7 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
     width: 100%;
     height: 100%;
     z-index: 0;
-    opacity: 0.95;
+    opacity: 0.65; /* Tinted overlay layer that allows imagery to shine through collapsed states */
     transition: opacity 0.5s ease;
 }
 
@@ -1265,7 +1285,7 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
 }
 
 .media-panel.expanded::before {
-    opacity: 0.25;
+    opacity: 0.20; /* Reduced to show full background glory when expanded */
 }
 
 .panel-content {
@@ -1385,6 +1405,73 @@ body.dark-theme .recipe-card:hover .recipe-card-video {
 @keyframes driftPatterns {
     0% { background-position: 0 0; }
     100% { background-position: 40px 40px; }
+}
+
+/* Premium Cuisine Centerpiece Media Card styling */
+.panel-media-card {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: auto;
+}
+
+.media-panel.expanded .panel-media-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 0.25s;
+    animation: mediaFloat 6s ease-in-out infinite alternate 0.8s;
+    border-color: rgba(212, 163, 115, 0.45);
+}
+
+.panel-media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panel-media-card:hover .panel-media-img {
+    transform: scale(1.08);
+}
+
+.panel-media-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 163, 115, 0.2) 0%, transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes mediaFloat {
+    0% {
+        transform: translateY(0);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+    }
+    100% {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+    }
+}
+
+/* Hide broken/failed videos to reveal Unsplash background */
+.media-panel.video-fallback video {
+    display: none !important;
+    opacity: 0 !important;
 }
 
 /* --- THE RECIPE SHOWCASE DETAIL MODAL --- */
